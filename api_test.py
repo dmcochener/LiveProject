@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-def api_test(url, searchTerm):
+def scrape_test(url, searchTerm):
     source = requests.get(url)
     print(source.status_code)
     if source.status_code == 200:
@@ -19,6 +19,7 @@ def get_terms():
 
 def get_element():
     element = input("Enter what element you want to get the text from (i.e. a, h4, etc) :\n")
+    return element
 
 def check_nodes(nodes,element):
     try:
@@ -34,7 +35,7 @@ def check_nodes(nodes,element):
 
 if __name__ == '__main__':
     url,searchTerms = get_terms()
-    nodes = api_test(url,searchTerms)
+    nodes = scrape_test(url,searchTerms)
     element = get_element()
     success = check_nodes(nodes,element)
     if success:
